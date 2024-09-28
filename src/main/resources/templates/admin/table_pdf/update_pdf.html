@@ -1,0 +1,28 @@
+<div th:fragment="admin" class="row container-fluid">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header pb-0 px-3">
+        <h6 class="mb-0">PDF Yönetimi</h6>
+      </div>
+      <div class="card-body pt-4 p-3">
+        <ul class="list-group">
+          <!-- PDF Management -->
+          <li th:each="pdf : ${pdfs}" class="list-group-item border-0 d-flex align-items-center p-4 mb-3 bg-light border-radius-lg shadow-sm">
+            <div class="me-3 flex-grow-1">
+              <h5 th:text="${pdf.pdfName}" class="mb-1"></h5>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-end align-items-center">
+              <form th:action="@{/updatePdf/{id}(id=${pdf.id})}" method="post" enctype="multipart/form-data" class="d-flex align-items-center me-2 mb-2 mb-sm-0">
+                <input type="file" name="pdf" accept="application/pdf" required class="form-control me-2" style="min-width: 150px;" />
+                <button type="submit" class="btn btn-success">PDF'yi Güncelle</button>
+              </form>
+              <form th:action="@{/downloadPdf/{id}(id=${pdf.id})}" method="get" class="ms-2">
+                <button type="submit" class="btn btn-primary">İndir</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

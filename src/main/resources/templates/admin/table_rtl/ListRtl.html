@@ -1,0 +1,163 @@
+<tbody th:fragment="rtl">
+<tr th:each="experinces : ${experience}">
+  <td>
+    <div class="d-flex px-2">
+      <div class="my-auto">
+        <h6 class="mb-0 text-sm" th:text="${experinces.NAME}"></h6>
+      </div>
+    </div>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${experinces.YEAR}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${experinces.CITY}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${experinces.EXPLANATION}"></span>
+  </td>
+  <td>
+    <form th:action="@{/updateRtl/{id}(id=${experinces.ID})}" method="get">
+      <button type="submit" class="btn btn-primary form-control">Edit</button>
+    </form>
+  </td>
+  <!--<td>
+  <form th:id="'deleteForm-' + ${experinces.ID}" th:action="@{/deleteskill/{id}(id=${experinces.ID})}" method="post" style="display:inline;">
+    <button type="button" class="btn btn-danger form-control" th:attr="data-id=${experinces.ID}" onclick="confirmDelete(this)">Sil</button>
+  </form>
+  <script>
+    function confirmDelete(button) {
+      const confirmed = confirm("Bu öğeyi silmek istediğinize emin misiniz?");
+      if (confirmed) {
+        const formId = 'deleteForm-' + button.getAttribute('data-id');
+        document.getElementById(formId).submit();
+      }
+    }
+  </script>
+</td>
+<td class="align-middle">
+  <button class="btn btn-link text-secondary mb-0"></button>
+</td> -->
+</tr>
+<tr th:each="educations : ${education}">
+  <td>
+    <div class="d-flex px-2">
+      <div class="my-auto">
+        <h6 class="mb-0 text-sm" th:text="${educations.NAME}"></h6>
+      </div>
+    </div>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${educations.YEAR}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${educations.CITY}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${educations.EXPLANATION}"></span>
+  </td>
+  <td>
+    <form th:action="@{/updateRtl_Education/{id}(id=${educations.ID})}" method="get">
+      <button type="submit" class="btn btn-primary form-control">Edit</button>
+    </form>
+  </td>
+  <!--<td>
+  <form th:id="'deleteForm-' + ${experinces.ID}" th:action="@{/deleteskill/{id}(id=${experinces.ID})}" method="post" style="display:inline;">
+    <button type="button" class="btn btn-danger form-control" th:attr="data-id=${experinces.ID}" onclick="confirmDelete(this)">Sil</button>
+  </form>
+  <script>
+    function confirmDelete(button) {
+      const confirmed = confirm("Bu öğeyi silmek istediğinize emin misiniz?");
+      if (confirmed) {
+        const formId = 'deleteForm-' + button.getAttribute('data-id');
+        document.getElementById(formId).submit();
+      }
+    }
+  </script>
+</td>
+<td class="align-middle">
+  <button class="btn btn-link text-secondary mb-0"></button>
+</td> -->
+</tr>
+<tr th:each="graduates : ${graduate}">
+  <td>
+    <div class="d-flex px-2">
+      <div class="my-auto">
+        <h6 class="mb-0 text-sm" th:text="${graduates.NAME}"></h6>
+      </div>
+    </div>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${graduates.YEAR}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${graduates.CITY}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${graduates.EXPLANATION}"></span>
+  </td>
+  <td>
+    <form th:action="@{/updateRtl_Graduate/{id}(id=${graduates.ID})}" method="get">
+      <button type="submit" class="btn btn-primary form-control">Edit</button>
+    </form>
+  </td>
+  <!--<td>
+  <form th:id="'deleteForm-' + ${experinces.ID}" th:action="@{/deleteskill/{id}(id=${experinces.ID})}" method="post" style="display:inline;">
+    <button type="button" class="btn btn-danger form-control" th:attr="data-id=${experinces.ID}" onclick="confirmDelete(this)">Sil</button>
+  </form>
+  <script>
+    function confirmDelete(button) {
+      const confirmed = confirm("Bu öğeyi silmek istediğinize emin misiniz?");
+      if (confirmed) {
+        const formId = 'deleteForm-' + button.getAttribute('data-id');
+        document.getElementById(formId).submit();
+      }
+    }
+  </script>
+</td>
+<td class="align-middle">
+  <button class="btn btn-link text-secondary mb-0"></button>
+</td> -->
+</tr>
+</tbody>
+
+<tbody th:fragment="rtl_reference">
+<tr th:each="references : ${reference}">
+  <td>
+    <div class="d-flex px-2">
+      <div class="my-auto">
+        <h6 class="mb-0 text-sm" th:text="${references.NAME}"></h6>
+      </div>
+    </div>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${references.JOB}"></span>
+  </td>
+  <td>
+    <span class="me-2 text-xs font-weight-bold" th:text="${references.EXPLANATION}"></span>
+  </td>
+  <td>
+    <form th:action="@{/updateRtl_Reference/{id}(id=${references.ID})}" method="get">
+      <button type="submit" class="btn btn-primary form-control">Edit</button>
+    </form>
+  </td>
+  <!--<td>
+  <form th:id="'deleteForm-' + ${experinces.ID}" th:action="@{/deleteskill/{id}(id=${experinces.ID})}" method="post" style="display:inline;">
+    <button type="button" class="btn btn-danger form-control" th:attr="data-id=${experinces.ID}" onclick="confirmDelete(this)">Sil</button>
+  </form>
+  <script>
+    function confirmDelete(button) {
+      const confirmed = confirm("Bu öğeyi silmek istediğinize emin misiniz?");
+      if (confirmed) {
+        const formId = 'deleteForm-' + button.getAttribute('data-id');
+        document.getElementById(formId).submit();
+      }
+    }
+  </script>
+</td>
+<td class="align-middle">
+  <button class="btn btn-link text-secondary mb-0"></button>
+</td> -->
+</tr>
+</tbody>
+

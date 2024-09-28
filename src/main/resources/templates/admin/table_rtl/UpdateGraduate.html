@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            border-radius: 1rem;
+            border: none;
+            padding: 2rem;
+        }
+
+        .card-header {
+            color: aliceblue;
+            border-bottom: 1px solid #444;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .form-label {
+            color: #fff;
+        }
+
+        .form-control {
+            background-color: #333;
+            border: none;
+            color: #fff;
+        }
+
+        .form-control:focus {
+            background-color: #444;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #6e8efb;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a7ae8;
+        }
+
+        .btn-link {
+            color: #6e8efb;
+        }
+
+        .btn-link:hover {
+            color: #5a7ae8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="col-md-6">
+        <div class="card shadow-lg">
+            <div class="card-header text-center">
+                <h2 class="h4 mb-0">Edit Item</h2>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/updateRtlGraduate}" th:object="${updateGraduate}" method="post">
+                    <input type="hidden" th:field="*{ID}" />
+                    <div class="mb-3">
+                        <label for="NAME" class="form-label">NAME:</label>
+                        <input type="text" id="NAME" th:field="*{NAME}" class="form-control" placeholder="Enter name" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="YEAR" class="form-label">YEAR:</label>
+                        <input type="text" id="YEAR" th:field="*{YEAR}" class="form-control" placeholder="Enter name" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="CITY" class="form-label">City:</label>
+                        <input type="text" id="CITY" th:field="*{CITY}" class="form-control" placeholder="Enter description" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="EXPLANATION" class="form-label">EXPLANATION:</label>
+                        <input type="text" id="EXPLANATION" th:field="*{EXPLANATION}" class="form-control" placeholder="Enter description" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update</button>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a href="/admin" class="btn btn-link">Back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+
+</html>

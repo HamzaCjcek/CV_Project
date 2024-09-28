@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Google Fots -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- Remixicon Icon -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+	<!-- Remixicon Icon -->
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<!-- Main CSS -->
+	<link href="/index/css/main.css" rel="stylesheet">
+	<title>CV PROJECT</title></head>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<body>
+
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	
+	<div class="home-three-style">
+		<!-- Header section start -->
+		<header class="ds-header">
+			<div class="container d-flex justify-content-between align-items-center">
+				<div class="ds-logo">
+					<a href="index.html">CV</a>
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 text-end">
+					<tr th:each="pdf : ${dosyalar}">
+						<td>
+							<a th:href="@{/downloadPdf/{id}(id=${pdf.id})}" class="ds-download-button">Download Resume <i class="ri-download-line"></i></a>
+
+						</td>
+					</tr>
+					<div sec:authorize="isAuthenticated()">
+						<div sec:authorize="hasRole('ROLE_ADMIN')">
+							<a href="/admin" class="ds-download-button">Admin Dashboard</a>
+						</div>
+
+						<!-- Logout Link styled as a button -->
+						<form th:action="@{/logout}" method="POST" style="display:inline;">
+							<button type="submit" class="ds-logout-button">Logout</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Header section end -->
+		<!--Personal START-->
+		<div th:replace="~{index/Personal :: index}"></div>
+		<!--Personal END--->
+		<!-- Resume experience start -->
+		<div th:replace="~{index/experience :: index}"></div>
+		<!-- Resume experience end -->
+		<!-- Resume education start -->
+		<div th:replace="~{index/education :: index}"></div>
+		<!-- Resume education end -->
+		<!-- Resume graduate start -->
+		<div th:replace="~{index/graduate :: index}"></div>
+		<!-- Resume graduate end -->
+	</div>
+	<!-- projects -->
+	<div th:replace="~{index/project :: index}"></div>
+	<!-- projects -->
+	<!-- sertifika -->
+	<div th:replace="~{index/sertifika :: index}"></div>
+	<!-- sertifika -->
+	<!--references START-->
+	<div th:replace="~{index/references :: index}"></div>
+	<!--references END--->
+	<!--skill START-->
+	<div class="row">
+		<div class="col">
+			<div th:replace="~{index/skill :: index}"></div>
+		</div>
+		<div class="col">
+			<div th:replace="~{index/languages :: index}"></div>
+		</div>
+	</div>
+
+	<!--languages END--->
+
+	<!-- footer -->
+
+	<footer class="ds-footer" style="padding: 40px; background-color: #2A2A2A;">
+		<div class="container">
+			<form class="ds-contact-form" th:action="@{/forum}" th:object="${forum}" method="post" onsubmit="return handleSubmit(event)"
+				  style="border: 1px solid #CBFE00; padding: 30px; border-radius: 15px; background-color: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: box-shadow 0.3s;">
+				<h2 class="h4 mb-4" style="color: #333; text-align: center;">Bana Ulaşın</h2>
+
+				<div class="mb-4">
+					<label for="forumName" class="form-label" style="font-weight: bold;">İsim:</label>
+					<input type="text" id="forumName" th:field="*{forumName}" class="form-control" placeholder="İsim" required
+						   style="border-radius: 10px; border: 1px solid #ccc; padding: 10px;" />
+				</div>
+
+				<div class="mb-4">
+					<label for="forumEmail" class="form-label" style="font-weight: bold;">Email:</label>
+					<input type="email" id="forumEmail" th:field="*{forumEmail}" class="form-control" placeholder="Email" required
+						   style="border-radius: 10px; border: 1px solid #ccc; padding: 10px;" />
+					<div class="invalid-feedback">Lütfen geçerli bir email adresi girin.</div>
+				</div>
+
+				<div class="mb-4">
+					<label for="forumChat" class="form-label" style="font-weight: bold;">Açıklama:</label>
+					<textarea id="forumChat" th:field="*{forumChat}" class="form-control" placeholder="Ulaşın" required
+							  rows="4" style="border-radius: 10px; border: 1px solid #ccc; padding: 10px;"></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-primary w-100"
+						style="background-color: #CBFE00; color: black; border: none; border-radius: 10px; padding: 10px; font-size: 16px; transition: background-color 0.3s, transform 0.3s;"
+						onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+					Gönder
+				</button>
+			</form>
+		</div>
+	</footer>
+
+
+
+
+	<!-- footer -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/index/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		const jobTitle = document.getElementById('job-title');
+
+		const colorfulText = text.split('').map((char) => {
+			return `<span data-char="${char}">${char}</span>`;
+		}).join('');
+
+		jobTitle.innerHTML = `JOB: <a href="#" class="colorful-text">${colorfulText}</a>`;
+	});
+</script>
+<script>
+	function validateEmail() {
+		const emailInput = document.getElementById('forumEmail');
+		const emailValue = emailInput.value;
+
+		// Check if the email contains "@" character
+		if (!emailValue.includes('@')) {
+			alert('Lütfen geçerli bir email adresi girin. (örn: example@example.com)');
+			emailInput.focus();
+			return false; // Prevent form submission
+		}
+		return true; // Allow form submission
+	}
+</script>
+<script>
+	function handleSubmit(event) {
+		event.preventDefault(); // Formun varsayılan gönderimini engelle
+
+		const form = event.target; // Form referansı
+		const formData = new FormData(form); // Form verilerini al
+
+		// SweetAlert ile uyarıyı göster
+		Swal.fire({
+			title: 'Başarılı!',
+			text: 'Mesajınız başarıyla gönderildi!',
+			icon: 'success',
+			confirmButtonText: 'Tamam'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				form.submit(); // Kullanıcı "Tamam" butonuna bastığında formu gönder
+			}
+		});
+	}
+</script>
+</html>

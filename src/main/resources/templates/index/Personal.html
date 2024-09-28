@@ -1,0 +1,33 @@
+<section th:fragment="index" class="ds-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-7 col-xxl-7 ds-banner-left">
+                <h2 class="ds-banner-hed">General Info</h2>
+                <h3 th:id="job-title">Age: <a href="#" th:text="${personal.AGE}">24</a></h3>
+                <h3 th:id="job-title">Address: <a href="#" th:text="${personal.ADDRESS}">Erzincan</a></h3>
+                <h3 th:id="job-title">Email: <a href="mailto:BlaBla@gmail.com" th:text="${personal.EMAIL}">BlaBla@gmail.com</a></h3>
+                <h3 th:id="job-title">Phone: <a href="tel:05522867230" th:text="${personal.PHONE}">05522867230</a></h3>
+                <h3 th:id="job-title">Meslek: <a href="#" th:text="${personal.JOB}">Computer Engineer</a></h3>
+                <ul class="ds-social">
+                    <li><a href="#" target="_blank"><i class="ri-github-fill"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="ri-instagram-fill"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5">
+                <figure >
+                    <img th:src="@{/index/profile_img/{imageName}(imageName=${profile_images.imageName})}" class="ds-image-shadow" alt="Hamza Çiçek">
+                    <figcaption th:text="${personal.NAME} + ' ' + ${personal.SURNAME}">Hamza Çiçek</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <style>
+        .ds-image-shadow {
+            height: 22rem;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+    </style>
+</section>

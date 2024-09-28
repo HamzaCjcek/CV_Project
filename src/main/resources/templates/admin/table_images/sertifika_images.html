@@ -1,0 +1,55 @@
+<div th:fragment="admin" class="row container-fluid">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header pb-0 px-3">
+                <h6 class="mb-0">Certificate Management</h6>
+            </div>
+            <div class="card-body pt-4 p-3">
+
+                <ul class="list-group">
+                    <li th:each="sertifika : ${s_image_dbList}" class="list-group-item border-0 d-flex flex-column flex-md-row align-items-start p-4 mb-3 bg-light border-radius-lg shadow-sm">
+                        <div class="me-3">
+                            <img th:src="@{/index/images/{imageName}(imageName=${sertifika.imageName})}" alt="Certificate Image" class="img-fluid rounded" style="max-width: 200px; height: auto; border: 2px solid #28a745; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" />
+                        </div>
+                        <div class="w-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 th:text="${sertifika.imageName}" class="mb-1"></h5>
+                                    <p th:text="${sertifika.sertifikaDescription}" class="text-muted mb-2"></p>
+                                    <a th:href="${sertifika.sertifikaUrl}" class="btn btn-outline-primary btn-sm" target="_blank">View Certificate</a>
+                                </div>
+                                <div class="ms-auto d-flex flex-column align-items-end">
+                                    <form method="POST" th:action="@{/deleteImageSertifika/{id}(id=${sertifika.id})}" onsubmit="return confirmDeletion();" class="mb-2">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                                            <i class="far fa-trash-alt me-1"></i>Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <form th:action="@{/resim-guncelleSertifika/{id}(id=${sertifika.id})}" th:method="post" enctype="multipart/form-data" class="mt-2">
+                                <input type="file" name="image" accept="image/*" required class="form-control mb-2" />
+                                <button type="submit" class="btn btn-outline-success btn-sm">Update Image</button>
+                            </form>
+
+                            <form th:action="@{/updateSertifika/{id}(id=${sertifika.id})}" th:method="post" class="d-flex flex-column mt-2">
+                                <input type="text" name="sertifikaName" th:value="${sertifika.imageName}" required class="form-control mb-1" placeholder="Certificate Name" />
+                                <input type="text" name="sertifikaDescription" th:value="${sertifika.sertifikaDescription}" required class="form-control mb-1" placeholder="Certificate Description" />
+                                <input type="text" name="sertifikaUrl" th:value="${sertifika.sertifikaUrl}" required class="form-control mb-1" placeholder="Certificate URL" />
+                                <button type="submit" class="btn btn-outline-success btn-sm mt-2">Update Certificate</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="mt-4">
+                    <h6 class="mb-3">Upload New Certificate Image</h6>
+                    <form method="POST" th:action="@{/uploadImageSertifika}" enctype="multipart/form-data">
+                        <label for="imageFileSertifika" class="form-label">Select File:</label>
+                        <input type="file" id="imageFileSertifika" name="imageFileSertifika" required class="form-control mb-3" />
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<tbody th:fragment="admin">
+<tr  th:each="adminSkill : ${skillsAdmin}">
+    <td>
+        <div class="d-flex px-2">
+            <div>
+                <img src="../admin/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+            </div>
+            <div class="my-auto">
+                <h6 class="mb-0 text-sm" th:text="${adminSkill.NAME}"></h6>
+            </div>
+        </div>
+    </td>
+    <td class="align-middle text-center">
+        <div class="d-flex align-items-center">
+            <!-- Yüzde Değerini Gösteren Span -->
+            <span class="me-2 text-xs font-weight-bold" th:text="${adminSkill.LEVEL}"></span>
+
+            <!-- İlerleme Çubuğu -->
+            <div>
+                <div class="progress">
+                    <div
+                            class="progress-bar bg-gradient-info"
+                            role="progressbar"
+                            aria-valuenow="${adminSkill.LEVEL}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            th:style="'width: ' + ${adminSkill.LEVEL} + '%;'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </td>
+    <td>
+        <form th:action="@{/update/{id}(id=${adminSkill.ID})}" method="get">
+            <button type="submit" class="btn btn-primary form-control">Edit</button>
+        </form>
+
+    </td>
+    <td>
+        <!-- Silme İşlemi İçin Form -->
+        <form th:id="'deleteForm-' + ${adminSkill.ID}" th:action="@{/deleteskill/{id}(id=${adminSkill.ID})}" method="post" style="display:inline;">
+            <button type="button" class="btn btn-danger form-control" th:attr="data-id=${adminSkill.ID}" onclick="confirmDelete(this)">Sil</button>
+        </form>
+
+        <script>
+            function confirmDelete(button) {
+                // Kullanıcıdan onay al
+                const confirmed = confirm("Bu öğeyi silmek istediğinize emin misiniz?");
+                if (confirmed) {
+                    // Onaylandıysa, ilgili formu gönder
+                    const formId = 'deleteForm-' + button.getAttribute('data-id');
+                    document.getElementById(formId).submit();
+                }
+            }
+        </script>
+
+    </td>
+    <td class="align-middle">
+        <button class="btn btn-link text-secondary mb-0">
+        </button>
+    </td>
+</tr>
+
+</tbody>
+

@@ -1,0 +1,17 @@
+<section  th:fragment="index" class="ds-resume-section" style="padding: 40px 20px; border-radius: 8px;">
+    <div class="container">
+        <div class="row">
+            <h2 style="margin-bottom: 30px; font-size: 28px; color: #C7F900;">Mezuniyet Bilgileri</h2>
+
+            <div class="col-12" th:each="graduate : ${graduates}">
+
+                <div class="experience-entry" style="margin-bottom: 20px; padding: 15px;border: 1px solid #C7F900; border-radius: 8px;">
+                    <h3 style="font-size: 24px;" th:text="${graduate.NAME}">Name</h3>
+                    <p th:text="${graduate.YEAR}"><strong>Year</strong> 2020</p>
+                    <p th:text="${graduate.CITY}"><strong>City</strong> - City</p>
+                    <p><a href="https://example.com" style="color: #C7F900; text-decoration: none;" th:text="${graduate.EXPLANATION}">Web Site</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

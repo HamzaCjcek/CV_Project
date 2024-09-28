@@ -1,0 +1,16 @@
+<section th:fragment="index" class="ds-testimonials-section">
+    <div class="container">
+        <h2><span>Referanslar</span></h2>
+        <div class="ds-testimonials-slider">
+            <div class="ds-testimonials-loop" th:each="reference :${references}">
+                <article th:text="${reference.EXPLANATION}">
+                    Bla Bla
+                </article>
+                <section>
+                    <span class="ds-name"  th:text="${reference.NAME}">Doç.Dr.Volkan Kaya</span>
+                    <span class="ds-post"  th:text="${reference.JOB}">Computer Engineer</span>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

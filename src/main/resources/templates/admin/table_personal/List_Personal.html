@@ -1,0 +1,24 @@
+<div class="row" th:fragment="personal">
+  <div>
+    <div class="card">
+      <div class="card-header pb-0 px-3">
+        <h6 class="mb-0">Personality Information</h6>
+      </div>
+      <div class="card-body pt-4 p-3">
+        <div class="personality-info">
+          <p><strong>Name:</strong> <span th:text="${personality.NAME}">Name here</span></p>
+          <p><strong>Surname:</strong> <span th:text="${personality.SURNAME}">Surname here</span></p>
+          <p><strong>Age:</strong> <span th:text="${personality.AGE}">Age here</span></p>
+          <p><strong>Job:</strong> <span th:text="${personality.JOB}">Job here</span></p>
+          <p><strong>About:</strong> <span th:text="${personality.ABOUT}">About here</span></p>
+          <p><strong>Phone:</strong> <span th:text="${personality.PHONE}">Phone here</span></p>
+          <p><strong>Email:</strong> <span th:text="${personality.EMAIL}">Email here</span></p>
+          <p><strong>Address:</strong> <span th:text="${personality.ADDRESS}">Address here</span></p>
+        </div>
+        <form th:action="@{/updatePersonal/{id}(id=${personality.ID})}" method="get">
+          <button type="submit" class="btn btn-primary form-control">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
